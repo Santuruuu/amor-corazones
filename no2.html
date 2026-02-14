@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No me digas que no...</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <img id="imagen" src="imagen/triste1.jpg" alt="Imagen triste" width="300">
+    <h1 id="mensaje">No me digas que no... 💔</h1>
+
+    <div class="btn">
+      <a href="si.html" class="btn-yes">¡Sí quiero!</a>
+      <a href="no1.html" id="btn-no" class="btn-no">No</a>
+    </div>
+  </div>
+
+  <script>
+    const mensajes = [
+      "No me digas que no... 💔",
+      "¿Por qué dudas de mí? 😢",
+      "Sin tu amor me siento perdido...",
+      "Tu ausencia me rompe el corazón 💖",
+      "Cada 'no' me duele más que el anterior 😥",
+      "Eres todo lo que necesito ✨",
+      "No quiero rendirme contigo 💕",
+      "Tu mirada me da esperanza 🥺",
+      "¿De verdad quieres dejarme así?",
+      "Dime que aún hay una oportunidad 💘"
+    ];
+
+    const imagenes = [
+      "imagen/triste1.jpg",
+      "imagen/triste2.jpg",
+      "imagen/triste3.jpg",
+      "imagen/triste4.jpg",
+      "imagen/triste5.jpg"
+    ];
+
+    const mensajeEl = document.getElementById("mensaje");
+    const imagenEl = document.getElementById("imagen");
+
+    // Cambia mensaje e imagen al azar cada vez que se carga la página
+    window.onload = () => {
+      const randomMsg = mensajes[Math.floor(Math.random() * mensajes.length)];
+      const randomImg = imagenes[Math.floor(Math.random() * imagenes.length)];
+      mensajeEl.textContent = randomMsg;
+      imagenEl.src = randomImg;
+    };
+  </script>
+</body>
+</html>

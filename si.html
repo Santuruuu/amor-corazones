@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Lo sabía!</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .sobre {
+      width: 400px;
+      height: 220px;
+      margin: 40px auto;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .base {
+      width: 100%;
+      height: 100%;
+      background: #e63946;
+      border-radius: 0 0 15px 15px;
+      position: absolute;
+      bottom: 0;
+      z-index: 1;
+      border: 3px dashed #fff;
+    }
+
+    .solapa {
+      width: 0;
+      height: 0;
+      border-left: 200px solid transparent;
+      border-right: 200px solid transparent;
+      border-top: 110px solid #e63946;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      transform-origin: top;
+      transition: transform 1s ease;
+      border-top: 3px dashed #fff;
+    }
+
+    .carta, .carta2, .carta3 {
+      width: 380px;
+      min-height: 180px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      z-index: 0;
+      transform: translateY(100%);
+      transition: transform 1s ease, opacity 1s ease;
+      padding: 20px;
+      opacity: 0;
+      border: 2px dashed #e63946;
+      overflow-y: auto;
+      max-height: 400px;
+    }
+
+    .carta p, .carta2 p, .carta3 p {
+      font-size: 1em;
+      color: #e63946;
+      line-height: 1.4;
+      text-align: justify;
+      margin: 10px 0;
+    }
+
+    .centrado {
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .carta2 {
+      width: 400px;
+      min-height: 220px;
+      left: 0;
+    }
+
+    .galeria {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .item img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .item p {
+      text-align: center;
+      font-size: 1em;
+      color: #e63946;
+      margin-top: 8px;
+    }
+
+    .carta3 {
+      width: 520px;
+      min-height: 260px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .carta3 img {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .carta3 .texto {
+      flex: 1;
+      font-size: 1.05em;
+      color: #e63946;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .scroll-texto {
+      max-height: 200px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .sobre.abierto .solapa {
+      transform: rotateX(-180deg);
+    }
+
+    .sobre.abierto .carta {
+      transform: translateY(-360px);
+      opacity: 1;
+    }
+
+    .sobre.abierto .carta2.visible {
+      transform: translateY(-390px);
+      opacity: 1;
+    }
+
+    .sobre.abierto .carta3.visible {
+      transform: translateY(-420px);
+      opacity: 1;
+    }
+
+    .btn-show {
+      background: #e63946;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-show:hover {
+      background: #c1121f;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="imagen/feliz1.jpg" alt="Imagen feliz" width="300">
+    <h1>¡Lo sabía! 💘✨</h1>
+    <p>Ahora somos inseparables, mi San Valentín 💑🌹</p>
+
+    <button id="btnAbrir" class="btn-show">Abrir sobre 💌</button>
+
+    <div id="sobre" class="sobre">
+      <div class="base"></div>
+      <div class="solapa"></div>
+
+      <!-- Carta 1 -->
+      <div class="carta">
+        <p>Solo quiero desearte un bonito día y lo pasé muy bien a lado de Demian, también recalcarte que aquí 
+          siempre voy a estar para lo que necesites, no importa la distancia o la hora, ahí voy a estar. Sé que 
+          vamos a estar lejos por un tiempo, pero eso no quiere decir que voy a dejar de amarte, al contrario, te voy 
+          a pensar todos los días, preguntándome si ya comiste, si has tomado agua y si andas durmiendo a tus horas. 
+          Pero lo más importante es que esto que siento por ti es real, no sé dónde estemos en el presente, pero deseo 
+          estar contigo y compartir un poco de mi vida a tu lado. Sé que ha sido unos días difíciles y nadamos un capítulo malo, 
+          pero en verdad déjame acompañarte en una etapa tan importante en tu vida estar lejos no me quitan las ganas, al contrario
+          tengo más ganas que antes porque sé que tengo que luchar por las dos personas que más amo en este mundo, estar ahí para ti 
+          es para mí lo más importante.
+          La amo demasiado y no me voy a ir sin haber intentado todo, todo, todo. ❤️</p>
+        <p class="centrado">Te amo ❤️‍🩹</p>
+        <p class="centrado">
+          <button id="btnOtra" class="btn-show">Ver otra hoja 📜</button>
+        </p>
+      </div>
+
+      <!-- Carta 2 -->
+      <div class="carta2" id="carta2">
+        <h2>✨ Nuestros recuerdos ✨</h2>
+        <div class="galeria">
+          <div class="item"><img src="imagen/amor1.png"><p>Siempre contigo 💖</p></div>
+          <div class="item"><img src="imagen/amor2.png"><p>Momentos que nunca olvidaré 🌹</p></div>
+          <div class="item"><img src="imagen/amor3.png"><p>Tu sonrisa es mi paz ✨</p></div>
+          <div class="item"><img src="imagen/amor4.png"><p>El amor nos une 💑</p></div>
+          <div class="item"><img src="imagen/amor5.png"><p>Mi mundo eres tú 🌎</p></div>
+          <div class="item"><img src="imagen/amor6.png"><p>Contigo todo es mejor 💕</p></div>
+          <div class="item"><img src="imagen/amor7.png"><p>Gracias por existir 🌸</p></div>
+          <div class="item"><img src="imagen/amor8.png"><p>Mi razón de sonreír 😍</p></div>
+          <div class="item"><img src="imagen/amor9.png"><p>Siempre en mi corazón ❤️</p></div>
+          <div class="item"><img src="imagen/amor10.png"><p>Te elijo hoy y siempre 💘</p></div>
+        </div>
+        <p class="centrado">"Prometo nunca rendirme si dejas que no me vaya" 💖</p>
+        <p class="centrado">
+          <button id="btnCarta3" class="btn-show">Abrir carta 3 📖</button>
+        </p>
+      </div>
+
+      <!-- Carta 3 -->
+      <div class="carta3" id="carta3">
+        <img src="imagen/feliz2.png" alt="Foto especial">
+        <div class="texto">
+          <div class="scroll-texto">
+           <p> Por último quiero que sea tu decisión. Me gustaría que subieras una canción de todas las que te he dedicado, 
+            esas que solo tú y yo sabemos lo que se siente y por qué te lo estoy pidiendo. Te lo pido porque me gustaría saber
+             que, de algún modo, ahí adentro de tu corazón sigues sintiendo algo por mí y sabré que sigues extrañándome. 
+             Con eso no me voy a rendir, sabes que no lo voy a hacer, pero esto me haría muy feliz y me daría las ganas de seguir
+              y seguir. </p>
+               <p> También me gustaría que subieras lo que va a llegar el 14 de febrero, porque te dije que no te iba 
+                a dejar sola ese día aunque estuviéramos peleados. No te iba a dejar, y las demás cosas al siguiente día. </p> 
+                <p> La amo y extraño decírtelo todos los días en cualquier momento, pero sé que todo va a su tiempo y lo entiendo.
+                   Si es por ti, iría hasta las estrellas solo por ti. Te amo y no voy a dejar de hacerlo. ❤️ </p>
+          </div>
+          <p class="centrado">
+            <button id="btnSalir" class="btn-show">Salir de todas las cartas ✨</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btnAbrir = document.getElementById("btnAbrir");
+    const sobre = document.getElementById("sobre");
+    const btnOtra = document.getElementById("btnOtra");
+    const carta2 = document.getElementById("carta2");
+    const btnCarta3 = document.getElementById("btnCarta3");
+    const carta3 = document.getElementById("carta3");
+    const btnSalir = document.getElementById("btnSalir");
+
+    btnAbrir.addEventListener("click", () => {
+      sobre.classList.toggle("abierto");
+    });
+
+    btnOtra.addEventListener("click", () => {
+      carta2.classList.toggle("visible");
+    });
+
+    btnCarta3.addEventListener("click", () => {
+      carta3.classList.toggle("visible");
+    });
+
+    btnSalir.addEventListener("click", () => {
+      carta2.classList.remove("visible");
+      carta3.classList.remove("visible");
+      sobre.classList.remove("abierto");
+    });
+  </script>
+</body>
+</html>
